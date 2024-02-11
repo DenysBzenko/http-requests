@@ -1,14 +1,14 @@
 # Django 
 ## HW7 
-- cookie/set/
-- cookie/get/<str:name>/
-- header/set/
-- header/get/<str:name>/
+- GET <cookie/set/>
+- GET <cookie/get/<str:name>/>
+- GET <header/set/>
+- GET <header/get/<str:name>/>
 
 
 # EXPRESS 
 ## HW 7 
-- /cookie/set
-- /cookie/get/:name
-- /header/set
-- /header/get/:name
+- GET </cookie/set>
+- GET </cookie/get/:name>
+- GET </header/set>
+- GET </header/get/:name>
