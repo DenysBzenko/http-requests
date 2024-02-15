@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "username": "Denys Bzenko",
+        "email": "dbzenko@kse.org.ua",
+        "first_name": "Denys",
+        "last_name": "User",
+        "is_admin": true,
+        "created_at": "2024-02-01T09:00:00Z",
+        "profession": "student"
+    },
+    {
+        "id": 2,
+        "username": "MaRloR",
+        "email": "mrlor@gmail.com",
+        "first_name": "Kostya",
+        "last_name": "Bezruki",
+        "is_admin": false,
+        "created_at": "2024-02-02T10:00:00Z",
+        "profession": "student"
+    }
+]
