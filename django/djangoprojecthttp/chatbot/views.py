@@ -4,7 +4,7 @@ from .helpers.header_helpers import set_header, get_header
 from .helpers.utils import load_users, save_users
 import json
 from django.views.decorators.csrf import csrf_exempt
-
+from django.shortcuts import render
 
 def set_cookie_view(request):
     name = request.GET.get('name')
@@ -85,3 +85,7 @@ def get_admin_users(request):
     users = load_users()
     admin_users = [user for user in users if user.get('is_admin')]
     return JsonResponse(admin_users, safe=False)
+
+
+def my_websocket(request):
+    return render(request, 'websocket.html')

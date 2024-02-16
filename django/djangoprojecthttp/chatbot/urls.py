@@ -1,8 +1,6 @@
 from django.urls import path
 from . import views
 
-
-
 urlpatterns = [
     path('cookie/set/', views.set_cookie_view),
     path('cookie/get/<str:name>/', views.get_cookie_view),
@@ -16,4 +14,8 @@ urlpatterns = [
     path('users/modify/<int:id>/', views.patch_user, name='patch_user'),
     path('users/delete/<int:id>/', views.delete_user, name='delete_user'),
     path('users/admins/', views.get_admin_users, name='get_admin_users'),
+
+
+    path('ws/chat/', views.my_websocket, name='my_websocket'),
 ]
+
