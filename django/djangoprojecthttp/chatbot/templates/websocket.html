@@ -5,14 +5,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Socket</title>
-    <link rel="stylesheet" href="{% static 'style/index.css' %}">
+    <title>My Template</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/index.css' %}">
+
 </head>
 <body>
-    <div id="chat-messages"></div>
-    <input type="text" id="message-input" placeholder="Type your message...">
-    <button id="send-button">Send</button>
+    <button onclick="handleClick()">Click me to ping server</button>
 
-    <script src="{% static 'script/index.js' %}"></script>
+    <div id="output"></div>
+
+
+    <div id="chat-box">
+        <div id="messages"></div>
+        <div id="input-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Your Name">
+
+            <label for="message">Message:</label>
+            <input type="text" id="message" placeholder="Type your message">
+
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    {% comment %} <script src="{% static 'scripts/index.js' %}" defer></script> {% endcomment %}
+    <script src="{% static 'script/chat.js' %}" defer></script>
 </body>
 </html>

@@ -1,20 +1,43 @@
-const chatSocket = new WebSocket('ws://localhost:8000/ws/chat/');
+const chatSocket = new WebSocket("ws://127.0.0.1:8000/ws");
 
-chatSocket.onmessage = function(e) {
-    const data = JSON.parse(e.data);
-    displayMessage(data.message);
+console.log('Hello from myscript.js!');
+const output = document.querySelector("#output");
+
+
+function writeToScreen(message) {
+    const li = document.createElement('p');
+    li.style.margin = '20px';
+    li.style.backgroundColor = 'lightgrey';
+    li.textContent = message;
+    output.appendChild(li);
+}
+
+
+chatSocket.onopen = function(e) {
+    console.log('opened connection');
+    let pingInterval = setInterval(() => sendMessage("msg from client"), 100);
+    setTimeout(() => clearInterval(pingInterval), 2000)
 };
 
-document.getElementById('send-button').addEventListener('click', function() {
-    const messageInputDom = document.getElementById('message-input');
-    const message = messageInputDom.value;
-    chatSocket.send(JSON.stringify({'message': message}));
-    messageInputDom.value = '';
-});
+chatSocket.onmessage = function(e) {
+    const message = e.data;
+    console.log(message)
+    writeToScreen(message)
+    // Handle incoming message
+};
 
-function displayMessage(message) {
-    const chatMessagesDom = document.getElementById('chat-messages');
-    const messageDom = document.createElement('div');
-    messageDom.innerText = message;
-    chatMessagesDom.appendChild(messageDom);
+
+chatSocket.onerror = function(e) {
+    console.error('Error appeared', e);
+};
+chatSocket.onclose = function(e) {
+    console.error('Chat socket closed unexpectedly', e);
+};
+
+function sendMessage(message) {
+    chatSocket.send(message);
+}
+
+function handleClick() {
+    sendMessage('Button clicked! Ping!')
 }

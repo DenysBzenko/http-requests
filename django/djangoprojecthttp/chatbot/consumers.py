@@ -1,30 +1,38 @@
-from channels.generic.websocket import AsyncConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 
-class YourConsumer(AsyncConsumer):
-    async def websocket_connect(self, event):
-        await self.send({"type": "websocket.accept"})
+class ChatConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        await self.channel_layer.group_add(
+            "chat",  # Група для всіх з'єднань, оскільки ми не використовуємо кімнати
+            self.channel_name
+        )
+        await self.accept()
 
-    async def websocket_receive(self, text_data):
-        message = json.loads(text_data)
-        await self.send_group(message)
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
+            "chat",
+            self.channel_name
+        )
 
-    async def websocket_disconnect(self, event):
-        pass
+    async def receive(self, text_data=None, bytes_data=None):
+        text_data_json = json.loads(text_data)
+        message = text_data_json.get('message')
 
-    async def send_group(self, message):
-        await self.channel_layer.group_add('chat', self.channel_name)
+        # Відправлення повідомлення всім учасникам групи
         await self.channel_layer.group_send(
-            'chat',
+            "chat",
             {
-                'type': 'chat.message',
-                'message': message,
+                'type': 'chat_message',
+                'message': message
             }
         )
 
+    # Прийняття повідомлення з групи
     async def chat_message(self, event):
         message = event['message']
-        await self.send({
-            "type": "websocket.send",
-            "text": json.dumps(message),
-        })
+
+        # Відправлення повідомлення назад до WebSocket
+        await self.send(text_data=json.dumps({
+            'message': message
+        }))
