@@ -1,4 +1,6 @@
-const chatSocket = new WebSocket("ws://127.0.0.1:8000/ws");
+const chatSocket = new WebSocket(
+    "ws://127.0.0.1:8000/ws"
+);
 
 console.log('Hello from myscript.js!');
 const output = document.querySelector("#output");

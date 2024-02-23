@@ -43,13 +43,32 @@ def get_user_by_id(request, id):
         return JsonResponse(user)
     else:
         return HttpResponse(status=404)
+from django.http import JsonResponse, HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 @csrf_exempt
-def post_user(request):
-    users = load_users()
-    new_user = json.loads(request.body)
-    users.append(new_user)
-    save_users(users)
-    return JsonResponse(new_user, status=201)
+def register(request):
+    if request.method == 'POST':
+        users = load_users()
+        new_user = {
+            "username": request.POST.get('username'),
+            "email": request.POST.get('email'),
+            "first_name": request.POST.get('first_name'),
+            "last_name": request.POST.get('last_name'),
+            "profession": request.POST.get('profession'),
+
+            "id": users[-1]['id'] + 1 if users else 1,
+            "created_at": str(datetime.now()),
+            "is_admin": False
+        }
+        users.append(new_user)
+        save_users(users)
+        return HttpResponseRedirect(reverse("my_websocket"))
+    else:
+
+        return render(request, 'registration.html')
+
 @csrf_exempt
 def put_user(request, id):
     users = load_users()

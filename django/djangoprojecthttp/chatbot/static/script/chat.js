@@ -1,5 +1,5 @@
 const chatSocket = new WebSocket(
-    'ws://' + window.location.host + '/ws/chat/'
+    "ws://127.0.0.1:8000/ws"
 );
 
 
@@ -36,9 +36,7 @@ function writeToScreen(user, message) {
 
 chatSocket.onmessage = function(e) {
     const message = e.data;
-    const wholeMessageJSON = JSON.parse(message);
-    const beMessageJSON = JSON.parse(wholeMessageJSON.yourMsg);
-
-    console.log(beMessageJSON)
-    writeToScreen(beMessageJSON.user, beMessageJSON.text)
+    const messageObject = JSON.parse(message);
+    writeToScreen(messageObject.user, messageObject.text);
 };
+

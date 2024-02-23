@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('cookie/set/', views.set_cookie_view),
@@ -9,7 +12,7 @@ urlpatterns = [
 
     path('users/', views.get_all_users, name='get_all_users'),
     path('users/<int:id>/', views.get_user_by_id, name='get_user_by_id'),
-    path('users/new/', views.post_user, name='post_user'),
+    path('registration/', views.register, name='post_user'),
     path('users/update/<int:id>/', views.put_user, name='put_user'),
     path('users/modify/<int:id>/', views.patch_user, name='patch_user'),
     path('users/delete/<int:id>/', views.delete_user, name='delete_user'),
@@ -19,3 +22,5 @@ urlpatterns = [
     path('ws/chat/', views.my_websocket, name='my_websocket'),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])

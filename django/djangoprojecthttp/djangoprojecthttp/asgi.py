@@ -29,7 +29,7 @@ application = ProtocolTypeRouter({
 
     'websocket': AuthMiddlewareStack(
         URLRouter([
-            path('ws/', ChatConsumer.as_asgi()),
+            path('ws', ChatConsumer.as_asgi()),
         ])
     ),
 })
