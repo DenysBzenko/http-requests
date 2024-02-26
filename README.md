@@ -1,0 +1,6 @@
+# URLS 
+
+- GET </USERS/>
+- POST < /USERS >
+- PUT </USERS/:ID >
+- DELETE </USERS/ID >
