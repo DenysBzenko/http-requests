@@ -2,9 +2,20 @@ from django.http import JsonResponse, HttpResponse
 from .helpers.cookie_helpers import set_cookie, get_cookie
 from .helpers.header_helpers import set_header, get_header
 from .helpers.utils import load_users, save_users
-import json
-from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+from django.http import JsonResponse, HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
+import json
+import datetime
+from pymongo import MongoClient
+import logging
+
+logger = logging.getLogger(__name__)
+
+client = MongoClient('mongodb+srv://dbzenko:pppp@cluster0.ntu0tgk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+db = client['my_database']
+users_collection = db['users']
+
 
 def set_cookie_view(request):
     name = request.GET.get('name')
@@ -31,10 +42,10 @@ def get_header_view(request, name):
     value = get_header(request, name)
     return JsonResponse({name: value})
 
-@csrf_exempt
 def get_all_users(request):
-    users = load_users()
+    users = list(users_collection.find({}))
     return JsonResponse(users, safe=False)
+
 @csrf_exempt
 def get_user_by_id(request, id):
     users = load_users()
@@ -43,30 +54,22 @@ def get_user_by_id(request, id):
         return JsonResponse(user)
     else:
         return HttpResponse(status=404)
-from django.http import JsonResponse, HttpResponseRedirect
-from django.views.decorators.csrf import csrf_exempt
-import json
 
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
-        users = load_users()
         new_user = {
             "username": request.POST.get('username'),
             "email": request.POST.get('email'),
             "first_name": request.POST.get('first_name'),
             "last_name": request.POST.get('last_name'),
             "profession": request.POST.get('profession'),
-
-            "id": users[-1]['id'] + 1 if users else 1,
-            "created_at": str(datetime.now()),
+            "created_at": datetime.now(),
             "is_admin": False
         }
-        users.append(new_user)
-        save_users(users)
+        users_collection.insert_one(new_user)
         return HttpResponseRedirect(reverse("my_websocket"))
     else:
-
         return render(request, 'registration.html')
 
 @csrf_exempt
@@ -79,6 +82,7 @@ def put_user(request, id):
     users[user_index] = user_data
     save_users(users)
     return JsonResponse(user_data)
+
 @csrf_exempt
 def patch_user(request, id):
     users = load_users()
@@ -89,6 +93,7 @@ def patch_user(request, id):
     user.update(user_data)
     save_users(users)
     return JsonResponse(user)
+
 @csrf_exempt
 def delete_user(request, id):
     users = load_users()

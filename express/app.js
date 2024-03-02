@@ -45,7 +45,8 @@ app.get('/header/get/:name', (req, res) => {
 app.get('/users', async (req, res) => {
   try {
     const users = await User.find();
-    res.send(users);
+    //res.send(users);
+    res.send('Hello dis is da express endpoint open up')
   } catch (error) {
     res.status(500).send(error);
   }

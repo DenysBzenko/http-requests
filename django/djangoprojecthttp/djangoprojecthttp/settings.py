@@ -36,10 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "daphne",
     'django.contrib.staticfiles',
     "chatbot",
     "channels",
-    "daphne",
+
 ]
 
 CHANNEL_LAYERS = {
@@ -134,4 +135,41 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+import os
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "verbose"
+        },
+        "file": {
+            "class": "logging.FileHandler",
+            "level": "INFO",
+            "filename": os.path.join(BASE_DIR, "debug.log"),
+            "formatter": "verbose"
+        },
+        "errors_file": {
+            "class": "logging.FileHandler",
+            "level": "ERROR",
+            "filename": os.path.join(BASE_DIR, "errors.log"),
+            "formatter": "verbose"
+        },
+    },
+    "formatters": {
+        "verbose": {
+            "format": "%(asctime)s %(levelname)s %(module)s %(process)d %(thread)d %(message)s"
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file", "errors_file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}

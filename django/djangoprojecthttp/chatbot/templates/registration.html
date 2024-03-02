@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <style>
-  /* Custom styles to ensure placeholder images fit well */
+
   .placeholder-img {
     width: 100%;
     height: auto;
@@ -20,11 +20,11 @@
 </head>
 <body class="bg-purple-900 h-screen flex items-center justify-center">
   <div class="bg-purple-800 text-white p-8 rounded-lg w-96">
+    <h1>Welcome to the best chat in the world</h1>
     <div class="flex justify-around mb-6">
       <button class="font-bold">SIGN IN</button>
-
     </div>
-    <form method="post" action="/register/">
+    <form method="post" action="/ws/chat/">
         {% csrf_token %}
         <div class="space-y-4">
           <input type="text" name="username" placeholder="Username" class="w-full px-4 py-2 rounded-lg bg-purple-700 placeholder-purple-400 focus:outline-none">
@@ -44,7 +44,7 @@
         <input type="checkbox" class="form-checkbox text-yellow-500">
         <span class="ml-2">Keep Me Signed In</span>
       </label>
-      <button class="bg-yellow-500 text-white px-6 py-2 rounded-lg font-bold">SIGN IN</button>
+
     </div>
     <div class="border-b border-purple-500 my-6"></div>
   </div>

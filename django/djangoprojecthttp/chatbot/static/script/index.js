@@ -25,7 +25,7 @@ chatSocket.onmessage = function(e) {
     const message = e.data;
     console.log(message)
     writeToScreen(message)
-    // Handle incoming message
+
 };
 
 
