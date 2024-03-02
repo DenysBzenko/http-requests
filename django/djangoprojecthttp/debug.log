@@ -1,0 +1,19 @@
+2024-03-02 23:13:22,884 INFO autoreload 28168 49928 Watching for file changes with StatReloader
+2024-03-02 23:14:29,339 INFO autoreload 17352 27872 Watching for file changes with StatReloader
+2024-03-02 23:14:56,804 INFO autoreload 4608 42860 Watching for file changes with StatReloader
+2024-03-02 23:16:00,703 INFO autoreload 16120 2532 Watching for file changes with StatReloader
+2024-03-02 23:16:32,514 INFO autoreload 16120 2532 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\djangoprojecthttp\settings.py changed, reloading.
+2024-03-02 23:16:34,796 INFO autoreload 17744 34344 Watching for file changes with StatReloader
+2024-03-02 23:17:14,312 INFO autoreload 18608 28212 Watching for file changes with StatReloader
+2024-03-02 23:17:33,850 INFO autoreload 18608 28212 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\djangoprojecthttp\settings.py changed, reloading.
+2024-03-02 23:17:39,304 INFO autoreload 19044 47840 Watching for file changes with StatReloader
+2024-03-02 23:17:42,564 INFO runserver 19044 44648 [mHTTP GET / 200 [0.03, 127.0.0.1:52686][0m
+2024-03-02 23:17:43,180 WARNING log 19044 12268 Not Found: /favicon.ico
+2024-03-02 23:17:43,181 WARNING runserver 19044 44648 [33mHTTP GET /favicon.ico 404 [0.02, 127.0.0.1:52690][0m
+2024-03-02 23:17:53,913 INFO runserver 19044 44648 [mHTTP POST /ws/chat/ 200 [0.01, 127.0.0.1:52697][0m
+2024-03-02 23:17:53,963 INFO runserver 19044 44648 [36mHTTP GET /static/style/index.css 304 [0.01, 127.0.0.1:52697][0m
+2024-03-02 23:17:53,966 INFO runserver 19044 44648 [36mHTTP GET /static/script/chat.js 304 [0.01, 127.0.0.1:52698][0m
+2024-03-02 23:17:53,979 INFO runserver 19044 44648 WebSocket HANDSHAKING /ws [127.0.0.1:52699]
+2024-03-02 23:17:53,983 INFO runserver 19044 44648 WebSocket CONNECT /ws [127.0.0.1:52699]
+2024-03-02 23:26:21,600 INFO autoreload 19044 47840 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\chatbot\views.py changed, reloading.
+2024-03-02 23:26:24,528 INFO autoreload 38056 32036 Watching for file changes with StatReloader
