@@ -17,3 +17,20 @@
 2024-03-02 23:17:53,983 INFO runserver 19044 44648 WebSocket CONNECT /ws [127.0.0.1:52699]
 2024-03-02 23:26:21,600 INFO autoreload 19044 47840 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\chatbot\views.py changed, reloading.
 2024-03-02 23:26:24,528 INFO autoreload 38056 32036 Watching for file changes with StatReloader
+2024-03-02 23:28:35,051 INFO autoreload 38056 32036 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\chatbot\views.py changed, reloading.
+2024-03-02 23:28:37,326 INFO autoreload 9328 39880 Watching for file changes with StatReloader
+2024-03-02 23:28:45,136 INFO autoreload 9328 39880 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\chatbot\views.py changed, reloading.
+2024-03-02 23:28:47,067 INFO autoreload 37356 53540 Watching for file changes with StatReloader
+2024-03-02 23:29:03,637 INFO autoreload 37356 53540 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\chatbot\views.py changed, reloading.
+2024-03-02 23:29:05,115 INFO autoreload 48376 45400 Watching for file changes with StatReloader
+2024-03-02 23:30:29,006 INFO autoreload 48376 45400 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\chatbot\views.py changed, reloading.
+2024-03-02 23:30:30,855 INFO autoreload 2180 26684 Watching for file changes with StatReloader
+2024-03-03 11:45:52,653 INFO autoreload 3520 24948 Watching for file changes with StatReloader
+2024-03-03 11:45:56,210 INFO runserver 3520 13668 [mHTTP GET / 200 [0.02, 127.0.0.1:57601][0m
+2024-03-03 11:46:23,192 INFO runserver 3520 13668 [mHTTP GET /users/ 200 [0.30, 127.0.0.1:57636][0m
+2024-03-03 11:47:57,664 ERROR log 3520 24960 Internal Server Error: /users/admins/
+2024-03-03 11:47:57,668 ERROR runserver 3520 13668 [35;1mHTTP GET /users/admins/ 500 [0.02, 127.0.0.1:57669][0m
+2024-03-03 11:49:14,494 INFO autoreload 3520 24948 D:\KSE\WEbprogram\WEB PROGRAM HW 7\http-requests\django\djangoprojecthttp\djangoprojecthttp\settings.py changed, reloading.
+2024-03-03 11:49:20,391 INFO autoreload 33612 54896 Watching for file changes with StatReloader
+2024-03-03 11:49:24,276 ERROR log 33612 56424 Internal Server Error: /users/admins/
+2024-03-03 11:49:24,277 ERROR runserver 33612 26148 [35;1mHTTP GET /users/admins/ 500 [0.01, 127.0.0.1:57714][0m

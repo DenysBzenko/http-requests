@@ -9,6 +9,8 @@ import json
 import datetime
 from pymongo import MongoClient
 import logging
+import time
+
 
 logger = logging.getLogger(__name__)
 
@@ -21,10 +23,12 @@ users_collection = db['users']
 @csrf_exempt
 def set_cookie_view(request):
     try:
+        start_time = time.time()
         name = request.GET.get('name')
         value = request.GET.get('value')
         response = JsonResponse({'message': f'Cookie : {name} = {value}'})
         set_cookie(response, name, value)
+        end_time = time.time()
         return response
     except Exception as e:
         logger.error(f" error  in set_cookie_view: {e}")

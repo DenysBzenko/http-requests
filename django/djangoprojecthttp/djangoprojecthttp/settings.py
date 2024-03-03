@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'chatbot.middleware.PerformanceMiddleware',
 ]
 
 ROOT_URLCONF = 'chatbot.urls'
@@ -168,6 +169,11 @@ LOGGING = {
     "loggers": {
         "django": {
             "handlers": ["console", "file", "errors_file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "ваш_додаток.middleware": {
+            "handlers": ["console", "errors_file"],
             "level": "INFO",
             "propagate": True,
         },

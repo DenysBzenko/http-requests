@@ -1,0 +1,2 @@
+2024-03-03 11:47:57,664 ERROR log 3520 24960 Internal Server Error: /users/admins/
+2024-03-03 11:47:57,668 ERROR runserver 3520 13668 [35;1mHTTP GET /users/admins/ 500 [0.02, 127.0.0.1:57669][0m
